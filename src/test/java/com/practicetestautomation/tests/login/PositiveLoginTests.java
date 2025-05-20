@@ -19,8 +19,6 @@ public class PositiveLoginTests {
         WebElement usernameField = driver.findElement(By.id("username"));
         usernameField.sendKeys("student");
 
-
-
         //Type password Password123 into Password field
         WebElement passwordField = driver.findElement(By.id("password"));
         passwordField.sendKeys("Password123");
