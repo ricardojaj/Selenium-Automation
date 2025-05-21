@@ -46,6 +46,37 @@ public class NegativeLoginTests {
 
     @Test
     public void incorrectPasswordTest(){
+    /*
+    Open page
+    Type username student into Username field
+    Type password incorrectPassword into Password field
+    Push Submit button
+    Verify error message is displayed
+    Verify error message text is Your password is invalid!
+    */
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://practicetestautomation.com/practice-test-login/");
+
+
+        WebElement usernameField = driver.findElement(By.id("username"));
+        usernameField.sendKeys("student");
+
+
+        WebElement passwordField = driver.findElement(By.id("password"));
+        passwordField.sendKeys("incorrectPassword");
+
+
+        WebElement submitBtn = driver.findElement(By.id("submit"));
+        submitBtn.click();
+
+        WebElement errorMessage = driver.findElement(By.id("error"));
+        errorMessage.isDisplayed();
+
+        String errorMessageActual = errorMessage.getText();
+        String errorMessageExpect = "Your password is invalid!";
+
+        Assert.assertEquals(errorMessageActual, errorMessageExpect);
+
 
     }
 
