@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,7 +19,7 @@ public class NegativeLoginTests {
         Verify error message is displayed
         Verify error message text is Your username is invalid!*/
 
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new EdgeDriver();
         driver.get("https://practicetestautomation.com/practice-test-login/");
 
 
