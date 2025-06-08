@@ -77,7 +77,7 @@ public class NegativeLoginTests {
         String errorMessageExpect = "Your password is invalid!";
 
         Assert.assertEquals(errorMessageActual, errorMessageExpect);
-
+        driver.quit();
 
     }
 
