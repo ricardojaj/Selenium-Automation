@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class LoginTests {
 
-    @Test
+    @Test(groups = {"positive", "regression", "smoke"})
     public void testLoginFunctionality(){
         //Open page
         WebDriver driver = new ChromeDriver();
@@ -53,7 +53,7 @@ public class LoginTests {
         driver.quit();
     }
 
-    @Test
+    @Test(groups = {"negative", "regression"})
     public void incorrectUsernameTest(){
        /* Open page
         Type username incorrectUser into Username field
@@ -88,7 +88,7 @@ public class LoginTests {
 
     }
 
-    @Test
+    @Test(groups = {"negative", "regression"})
     public void incorrectPasswordTest(){
     /*
     Open page

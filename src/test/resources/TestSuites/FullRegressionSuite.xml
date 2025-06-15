@@ -4,12 +4,20 @@
     <test name="Positive Login Tests">
         <classes>
             <class name="com.practicetestautomation.tests.login.LoginTests"/>
+            <methods>
+                <include name="testLoginFunctionality"></include>
+            </methods>
         </classes>
     </test>
 
     <test name="Negative Login Tests">
+        <groups>
+            <run>
+                <exclude name="positive"></exclude>
+            </run>
+        </groups>
         <classes>
-            <class name="com.practicetestautomation.tests.login.NegativeLoginTests"/>
+            <class name="com.practicetestautomation.tests.login.LoginTests"/>
         </classes>
     </test>
 </suite>

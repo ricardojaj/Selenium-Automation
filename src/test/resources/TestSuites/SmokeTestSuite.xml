@@ -2,6 +2,11 @@
 
 <suite name="Smoke Test Suite" verbose="1">
     <test name="Positive Login Tests">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
         <classes>
             <class name="com.practicetestautomation.tests.login.LoginTests"/>
         </classes>
