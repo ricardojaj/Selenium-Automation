@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LoginTests {
@@ -53,8 +54,9 @@ public class LoginTests {
         driver.quit();
     }
 
+    @Parameters({"username", "password", "expectedErrorMessage"})
     @Test(groups = {"negative", "regression"})
-    public void incorrectUsernameTest(){
+    public void negativeLoginTest(String username, String password, String expectedErrorMessage){
        /* Open page
         Type username incorrectUser into Username field
         Type password Password123 into Password field
@@ -67,11 +69,11 @@ public class LoginTests {
 
 
         WebElement usernameField = driver.findElement(By.id("username"));
-        usernameField.sendKeys("Username");
+        usernameField.sendKeys(username);
 
 
         WebElement passwordField = driver.findElement(By.id("password"));
-        passwordField.sendKeys("Password123");
+        passwordField.sendKeys(password);
 
 
         WebElement submitBtn = driver.findElement(By.id("submit"));
@@ -81,49 +83,12 @@ public class LoginTests {
         errorMessage.isDisplayed();
 
         String textError = errorMessage.getText();
-        String actualMessage = "Your username is invalid!";
 
-        Assert.assertEquals(actualMessage, textError);
+
+        Assert.assertEquals(expectedErrorMessage, textError);
         driver.quit();
 
     }
-
-    @Test(groups = {"negative", "regression"})
-    public void incorrectPasswordTest(){
-    /*
-    Open page
-    Type username student into Username field
-    Type password incorrectPassword into Password field
-    Push Submit button
-    Verify error message is displayed
-    Verify error message text is Your password is invalid!
-    */
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://practicetestautomation.com/practice-test-login/");
-
-
-        WebElement usernameField = driver.findElement(By.id("username"));
-        usernameField.sendKeys("student");
-
-
-        WebElement passwordField = driver.findElement(By.id("password"));
-        passwordField.sendKeys("incorrectPassword");
-
-
-        WebElement submitBtn = driver.findElement(By.id("submit"));
-        submitBtn.click();
-
-        WebElement errorMessage = driver.findElement(By.id("error"));
-        errorMessage.isDisplayed();
-
-        String errorMessageActual = errorMessage.getText();
-        String errorMessageExpect = "Your password is invalid!";
-
-        Assert.assertEquals(errorMessageActual, errorMessageExpect);
-        driver.quit();
-
-    }
-
 
 
 }
