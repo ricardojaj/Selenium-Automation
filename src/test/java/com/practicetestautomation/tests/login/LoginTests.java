@@ -4,19 +4,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LoginTests {
+    private WebDriver driver;
+
+    @BeforeMethod(alwaysRun = true)
+    public void setUp(){
+        //Open page
+        driver = new ChromeDriver();
+        driver.get("https://practicetestautomation.com/practice-test-login/");
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDown(){
+        driver.quit();
+    }
 
     @Test(groups = {"positive", "regression", "smoke"})
     public void testLoginFunctionality(){
-        //Open page
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://practicetestautomation.com/practice-test-login/");
-
         //Type username student into Username field
         WebElement usernameField = driver.findElement(By.id("username"));
         usernameField.sendKeys("student");
@@ -51,7 +61,6 @@ public class LoginTests {
         WebElement logOutButton = driver.findElement(By.linkText("Log out"));
         Assert.assertTrue(logOutButton.isDisplayed());
 
-        driver.quit();
     }
 
     @Parameters({"username", "password", "expectedErrorMessage"})
@@ -63,10 +72,6 @@ public class LoginTests {
         Push Submit button
         Verify error message is displayed
         Verify error message text is Your username is invalid!*/
-
-        WebDriver driver = new EdgeDriver();
-        driver.get("https://practicetestautomation.com/practice-test-login/");
-
 
         WebElement usernameField = driver.findElement(By.id("username"));
         usernameField.sendKeys(username);
@@ -86,7 +91,6 @@ public class LoginTests {
 
 
         Assert.assertEquals(expectedErrorMessage, textError);
-        driver.quit();
 
     }
 
