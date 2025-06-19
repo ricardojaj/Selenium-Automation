@@ -14,7 +14,21 @@ public class LoginTests {
     private WebDriver driver;
 
     @BeforeMethod(alwaysRun = true)
-    public void setUp(){
+    @Parameters("browser")
+    public void setUp(String browser){
+       /* System.out.println("Running test in " + browser);
+        switch (browser.toLowerCase()){
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            case "edge":
+                driver = new EdgeDriver();
+                break;
+            default:
+                driver = new ChromeDriver();
+                break;
+        }*/
+
         //Open page
         driver = new ChromeDriver();
         driver.get("https://practicetestautomation.com/practice-test-login/");
