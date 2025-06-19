@@ -6,17 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class LoginTests {
     private WebDriver driver;
 
     @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
-    public void setUp(String browser){
+    public void setUp(@Optional("chrome") String browser){
        System.out.println("Running test in " + browser);
         switch (browser.toLowerCase()){
             case "chrome":
