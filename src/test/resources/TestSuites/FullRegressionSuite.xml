@@ -26,7 +26,8 @@
     </test>
 
     <test name="Incorrect Password Test">
-        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="browser" value="edge"></parameter>
+        <parameter name="username" value="student"></parameter>
         <parameter name="password" value="passwordIncorrect"></parameter>
         <parameter name="expectedErrorMessage" value="Your password is invalid!"></parameter>
         <classes>

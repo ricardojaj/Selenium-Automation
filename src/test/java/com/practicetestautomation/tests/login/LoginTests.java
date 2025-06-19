@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,7 +17,7 @@ public class LoginTests {
     @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
     public void setUp(String browser){
-       /* System.out.println("Running test in " + browser);
+       System.out.println("Running test in " + browser);
         switch (browser.toLowerCase()){
             case "chrome":
                 driver = new ChromeDriver();
@@ -27,10 +28,8 @@ public class LoginTests {
             default:
                 driver = new ChromeDriver();
                 break;
-        }*/
+        }
 
-        //Open page
-        driver = new ChromeDriver();
         driver.get("https://practicetestautomation.com/practice-test-login/");
     }
 
