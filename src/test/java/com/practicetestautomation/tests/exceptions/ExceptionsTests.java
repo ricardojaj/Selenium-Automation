@@ -8,6 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.time.Duration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +34,8 @@ public class ExceptionsTests {
                 break;
         }
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         driver.get("https://practicetestautomation.com/practice-test-exceptions/");
     }
 
@@ -45,7 +48,6 @@ public class ExceptionsTests {
     @Test
     public void noSuchElementException(){
         logger.info("Starting testLoginFunctionality");
-
         WebElement addButton = driver.findElement(By.xpath("//button[@id=\"add_btn\"]"));
         logger.info("Click Add button");
         addButton.click();
@@ -53,14 +55,9 @@ public class ExceptionsTests {
         WebElement row2InputField = driver.findElement(By.xpath("//div[@id='row2']/input"));
         Assert.assertTrue(row2InputField.isDisplayed(), "Row 2 input field is not displayed");
 
-        logger.info("Verify the confirmation message: " + expectedErrorMessage);
         WebElement confirmationMessage = driver.findElement(By.id("confirmation"));
         confirmationMessage.isDisplayed();
 
-
-
     }
-
-
 
 }
