@@ -5,9 +5,15 @@
         <classes>
             <class name="com.practicetestautomation.tests.exceptions.ExceptionsTests">
                 <methods>
-                    <include name="noSuchElementException"/>
+                    <include name="noSuchElementExceptionTest"/>
+                </methods>
+            </class>
+            <class name="com.practicetestautomation.tests.exceptions.ExceptionsTests">
+                <methods>
+                    <include name="timeoutExceptionTest"/>
                 </methods>
             </class>
         </classes>
     </test>
+
 </suite>

@@ -1,6 +1,7 @@
 package com.practicetestautomation.tests.exceptions;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -48,7 +49,7 @@ public class ExceptionsTests {
     }
 
     @Test
-    public void noSuchElementException(){
+    public void noSuchElementExceptionTest(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         logger.info("Starting testLoginFunctionality");
@@ -64,6 +65,23 @@ public class ExceptionsTests {
         WebElement confirmationMessage = driver.findElement(By.id("confirmation"));
         confirmationMessage.isDisplayed();
 
+    }
+
+    @Test
+    public void timeoutExceptionTest(){
+        logger.info("Starting testLoginFunctionality");
+        WebElement addButton = driver.findElement(By.xpath("//button[@id=\"add_btn\"]"));
+        logger.info("Click Add button");
+        addButton.click();
+
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+            WebElement row2InputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='row2']/input")));
+        } catch (TimeoutException e) {
+            System.out.println("Element did not appear within expected time.");
+        } finally {
+            driver.quit();
+        }
     }
 
 }
