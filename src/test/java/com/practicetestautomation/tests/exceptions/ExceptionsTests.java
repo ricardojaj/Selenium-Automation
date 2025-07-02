@@ -84,4 +84,30 @@ public class ExceptionsTests {
         }
     }
 
+
+    @Test
+    public void elementNotInteractableExceptionTest(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        logger.info("Starting testLoginFunctionality");
+        WebElement addButton = driver.findElement(By.xpath("//button[@id=\"add_btn\"]"));
+        logger.info("Click Add button");
+        addButton.click();
+
+        WebElement inputField = driver.findElement(By.xpath("//div[@id='row2']/input"));
+        inputField.sendKeys("Coffee");
+
+        WebElement saveButton = driver.findElement(By.name("Save"));
+        saveButton.click();
+
+        WebElement messageConfirmation = driver.findElement(By.id("confirmation"));
+        String actualMessage = messageConfirmation.getText();
+        String expectedMessage = "Row 2 was saved";
+        Assert.assertEquals(actualMessage, expectedMessage, "Message is not expected");
+
+    }
+
+//div[@id='row2']/input
+
+
 }
