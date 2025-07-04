@@ -97,7 +97,7 @@ public class ExceptionsTests {
         WebElement inputField = driver.findElement(By.xpath("//div[@id='row2']/input"));
         inputField.sendKeys("Coffee");
 
-        WebElement saveButton = driver.findElement(By.name("Save"));
+        WebElement saveButton = driver.findElement(By.xpath("//div[@id='row2']/button[@name='Save']"));
         saveButton.click();
 
         WebElement messageConfirmation = driver.findElement(By.id("confirmation"));
