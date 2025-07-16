@@ -128,4 +128,21 @@ public class ExceptionsTests {
 
     }
 
+
+    @Test
+    public void staleElementReferenceExceptionTest(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        logger.info("Starting testLoginFunctionality");
+
+        WebElement instructionsText = driver.findElement(By.id("instructions"));
+
+        WebElement addButton = driver.findElement(By.xpath("//button[@id=\"add_btn\"]"));
+        addButton.click();
+
+        instructionsText.isDisplayed();
+
+
+    }
+
 }
