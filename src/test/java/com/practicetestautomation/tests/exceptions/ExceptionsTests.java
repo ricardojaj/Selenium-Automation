@@ -107,5 +107,16 @@ public class ExceptionsTests {
 
     }
 
+    @Test
+    public void invalidElementStateExceptionTest(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        logger.info("Starting testLoginFunctionality");
+
+        WebElement inputField = driver.findElement(By.xpath("//div[@id='row1']/input"));
+        inputField.clear();
+
+        inputField.sendKeys("Hot-Dog");
+    }
 
 }
