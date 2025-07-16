@@ -113,10 +113,19 @@ public class ExceptionsTests {
 
         logger.info("Starting testLoginFunctionality");
 
+        WebElement editButton = driver.findElement(By.id("edit_btn"));
+        editButton.click();
+
         WebElement inputField = driver.findElement(By.xpath("//div[@id='row1']/input"));
         inputField.clear();
 
         inputField.sendKeys("Hot-Dog");
+
+        WebElement saveButton = driver.findElement(By.xpath("//div[@id='row1']/button[@name='Save']"));
+        saveButton.click();
+
+        Assert.assertEquals(inputField.getAttribute("value"), "Hot-Dog");
+
     }
 
 }
