@@ -128,7 +128,6 @@ public class ExceptionsTests {
 
     }
 
-
     @Test
     public void staleElementReferenceExceptionTest(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -140,8 +139,7 @@ public class ExceptionsTests {
         WebElement addButton = driver.findElement(By.xpath("//button[@id=\"add_btn\"]"));
         addButton.click();
 
-        instructionsText.isDisplayed();
-
+        Assert.assertTrue(wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("instructions"))), "Instructions text is still displayed");
 
     }
 
