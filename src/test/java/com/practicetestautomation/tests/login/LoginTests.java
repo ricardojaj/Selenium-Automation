@@ -2,9 +2,7 @@ package com.practicetestautomation.tests.login;
 
 import com.practicetestautomation.pageobjects.LoginPage;
 import com.practicetestautomation.pageobjects.SuccessfulLoginPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
@@ -58,36 +56,11 @@ public class LoginTests {
     @Parameters({"username", "password", "expectedErrorMessage"})
     @Test(groups = {"negative", "regression"})
     public void negativeLoginTest(String username, String password, String expectedErrorMessage){
-       /* Open page
-        Type username incorrectUser into Username field
-        Type password Password123 into Password field
-        Push Submit button
-        Verify error message is displayed
-        Verify error message text is Your username is invalid!*/
         logger.info("Starting negativeLoginTest");
-
-
-        WebElement usernameField = driver.findElement(By.id("username"));
-        logger.info("Type username: " + username);
-        usernameField.sendKeys(username);
-
-
-        WebElement passwordField = driver.findElement(By.id("password"));
-        logger.info("Typing password");
-        passwordField.sendKeys(password);
-
-
-        WebElement submitBtn = driver.findElement(By.id("submit"));
-        logger.info("Click Submit button");
-        submitBtn.click();
-
-        logger.info("Verify the error message: " + expectedErrorMessage);
-        WebElement errorMessage = driver.findElement(By.id("error"));
-        errorMessage.isDisplayed();
-
-        String textError = errorMessage.getText();
-
-        Assert.assertEquals(expectedErrorMessage, textError);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.visit();
+        loginPage.executeLogin(username, password);
+        Assert.assertEquals(loginPage.getErrorMessage(), expectedErrorMessage);
 
     }
 
